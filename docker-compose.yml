@@ -1,16 +1,19 @@
-version: '3.1'
+version: '3.8'
 
 services:
-  dev-mysql:
-    image: mysql:8.0
-    container_name: dev-mysql
+  mysql-dev:
+    container_name: mysql-dev
+    image: mysql:latest
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: notroot
-      MYSQL_DATABASE: taskmanager-mysql
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: taskmanager
       MYSQL_USER: parsa
       MYSQL_PASSWORD: notparsa
     ports:
-      - '3307:3307'
+      - "3306:3306"
     volumes:
-      - ./mysql-data:/var/lib/mysql
+      - mysql-data:/var/lib/mysql
+
+volumes:
+  mysql-data:
