@@ -18,11 +18,14 @@ model User {
   email       String   @unique
   phoneNumber String   @unique
   username    String   @unique
-  hash    String
-  role        UserRole
+  password    String
+  role        UserRole?
   createdAt DateTime @default(now())
   updatedAt DateTime?
   avatar UserProfilePicture?
+  tasks       Task[]
+
+  @@map("users")
 }
 enum UserRole {
   SYSTEM_ADMIN
@@ -38,6 +41,7 @@ model UserProfilePicture {
 }
 model Task {
   id          Int   @id @default(autoincrement())
+  userId    Int    @unique
   title       String
   description String?
   //TODO implement db logic to handle conditions like pending/shifted or...
@@ -45,7 +49,9 @@ model Task {
   attachment TaskAttachment[]
   createdAt DateTime @default(now())
   updatedAt DateTime?
+  user        User   @relation(fields: [userId], references: [id])
   @@index([isCompleted])
+  @@map("tasks")
 }
 model TaskAttachment {
   id        Int    @id @default(autoincrement())
