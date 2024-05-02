@@ -1,4 +1,4 @@
-import { IsEmail, IsNotEmpty, IsString, Max, Min } from "class-validator";
+import { IsEmail, IsNotEmpty, IsString, Max, MaxLength, Min, MinLength } from "class-validator";
 
 export class AuthDto {
     @IsString()
@@ -9,8 +9,9 @@ export class AuthDto {
    //TODO Fix value checkings here
     @IsString()
     @IsNotEmpty()
-    // @Min(8)
-   password: string;
+    @MinLength(8)
+    @MaxLength(20)
+    password: string;
 
     @IsString()
     @IsNotEmpty()
@@ -18,8 +19,8 @@ export class AuthDto {
 
     @IsString()
     @IsNotEmpty()
-    // @Min(6)
-    // @Max(20)
+    @MinLength(6)
+    @MaxLength(20)
    username: string;
 
 }
