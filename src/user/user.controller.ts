@@ -1,14 +1,17 @@
-import { Controller, Get, Patch, Query, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Query, Request, UseGuards } from '@nestjs/common';
+import { UserService } from './user.service';
 import { User } from '@prisma/client';
 import { GetUser } from 'src/auth/decorator';
 import { JwtGuard, RoleGuard } from 'src/auth/guard';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { PaginationService } from 'src/service/paginator/pagination.service';
+import { UpdateUserDto } from 'src/auth/dto/update.user.dto';
 
 @UseGuards(JwtGuard)
 @Controller('users')
 export class UserController {
   constructor(
+    private userService: UserService,
     private readonly paginationService: PaginationService,
     private readonly prisma: PrismaService) {}
   //Get the LogedIn User data
@@ -28,8 +31,13 @@ export class UserController {
     return { items, total };
   }
 
-  @Patch('edit')
-  editUser() {
-
+  @Patch(':id')
+  async update(@Param('id') id: number, @Body() updateUserDto: UpdateUserDto) {
+      return this.userService.update(Number(id), updateUserDto);
   }
-}
+
+  @Delete(':id')
+  async remove(@Param('id') id: number) {
+    return this.userService.remove(Number(id));
+  }
+  }
