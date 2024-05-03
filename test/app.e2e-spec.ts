@@ -28,10 +28,11 @@ describe('App e2e', () => {
     await app.listen(4000);
 
     prisma = app.get(PrismaService);
-    await prisma.cleanDb();
-    pactum.request.setBaseUrl(
-      'http://localhost:4000',
-    );
+    //TODO generate method to clear db in prisma service
+    // await prisma.cleanDb();
+    // pactum.request.setBaseUrl(
+    //   'http://localhost:4000',
+    // );
   });
 
   afterAll(async () => {
