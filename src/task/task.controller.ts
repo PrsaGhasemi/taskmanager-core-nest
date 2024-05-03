@@ -12,15 +12,16 @@ import {
 } from '@nestjs/common';
 import { TaskService } from './task.service';
 import { CreateTaskDto , UpdateTaskDto } from 'src/task/dto/main';
-import { JwtGuard } from 'src/auth/guard';
+import { JwtGuard, RoleGuard } from 'src/auth/guard';
+import { Request } from 'express';
 
 @UseGuards(JwtGuard)
 @Controller('tasks')
 export class TaskController {
   constructor(private readonly taskService: TaskService) {}
 
-  @Get()
-  @Roles('SYSTEM_USER', 'SYSTEM_ADMIN')
+  @Get('all')
+  @UseGuards(new RoleGuard('SYSTEM_ADMIN'))
   async findAll(@Req() req) {
     const user = req.user;
     if (user.role === 'SYSTEM_ADMIN') {
@@ -31,7 +32,6 @@ export class TaskController {
   }
 
   @Get(':id')
-  @Roles('SYSTEM_USER', 'SYSTEM_ADMIN')
   async findOne(@Param('id') id: number, @Req() req) {
     const user = req.user;
     if (user.role === 'SYSTEM_ADMIN') {
@@ -40,23 +40,20 @@ export class TaskController {
       return this.taskService.findOneByUserId(id, user.id);
     }
   }
-
-  @Post()
-  @Roles('SYSTEM_USER')
+  @Post('create')
   async create(@Body() createTaskDto: CreateTaskDto, @Req() req) {
     const user = req.user;
-    return this.taskService.create(createTaskDto, user.id);
+    console.log(user);
+    return this.taskService.create(createTaskDto, Number(user.id));
   }
 
   @Put(':id')
-  @Roles('SYSTEM_USER')
   async update(@Param('id') id: number, @Body() updateTaskDto: UpdateTaskDto, @Req() req) {
     const user = req.user;
     return this.taskService.update(id, updateTaskDto, user.id);
   }
 
   @Delete(':id')
-  @Roles('SYSTEM_USER')
   @HttpCode(204)
   async delete(@Param('id') id: number, @Req() req) {
     const user = req.user;

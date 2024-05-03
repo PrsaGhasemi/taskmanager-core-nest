@@ -12,7 +12,7 @@ export class UserService {
     return this.prisma.user.update({
       where: { id },
       data: updateUserDto
-    });
+        });
   }
   async remove(id: number): Promise<User> {
     return this.prisma.user.delete({

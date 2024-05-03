@@ -20,7 +20,7 @@ export class UserController {
     return user;
   }
 
-  @UseGuards(RoleGuard)
+  @UseGuards(new RoleGuard('SYSTEM_ADMIN'))
   @Get('all')
   async findAll(@Query('page') page: number, @Query('limit') limit: number): Promise<{ items: User[]; total: number }> {
     const { items, total } = await this.paginationService.paginate<User>(
