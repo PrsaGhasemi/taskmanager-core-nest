@@ -7,7 +7,7 @@ import { JwtGuard } from 'src/auth/guard';
 @Controller('users')
 export class UserController {
   
-  //Get the LoggedIn User data
+  //Get the LogedIn User data
   @Get('me')
   getMe(@GetUser() user: User) {
     return user;
@@ -15,6 +15,6 @@ export class UserController {
 
   @Patch('edit')
   editUser() {
-    
+
   }
 }

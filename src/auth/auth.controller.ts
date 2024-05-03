@@ -1,10 +1,13 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AuthDto } from './dto';
 import { SigninDto } from './dto/signin.dto';
 @Controller('auth')
 export class AuthController {
   constructor(private authService: AuthService) {}
+  
+  //Actually we aint storing anything so 200 would be fine
+  @HttpCode(HttpStatus.OK)
   @Post('signin')
   signin(@Body() dto: SigninDto) {
     return this.authService.signin(dto);
