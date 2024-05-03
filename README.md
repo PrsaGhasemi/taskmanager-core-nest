@@ -1,15 +1,15 @@
 ## Description
 
   NadinSoft Node.Js backend test, TaskManager built with nestjs/ts/prisma on mysql
-  
+  Thanks for reviewing my project.
   Parsa Ghasemi
 
 
 ## Installation
 
-#before doing anything:
+#Before doing anything:
 create .env and .env.test files after pulling this repo and copy values from
-their example into your own .env file
+their example into your own env files.
 
 ```bash
 $ yarn install
@@ -17,8 +17,7 @@ $ yarn install
 
 ## Running the app
 
-#first run this script which is responsible to restart the docker and migrate the prisma
-schema again:
+#First script is responsible for restarting dev container and run prisma migration command
 
 ```bash
 #restart docker
@@ -30,7 +29,10 @@ $ yarn start:dev
 
 ## Test
 
-#i only created a template for e2e testing based on jest but to run it
+#This script restarts test db container
+```bash
+$ yarn db:test:restart
+
 ```bash
 # e2e tests
 $ yarn test:e2e
