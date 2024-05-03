@@ -13,7 +13,7 @@
     "prisma:test:deploy": "prisma migrate deploy",
     "db:test:rm": "docker compose rm mysql-test -s -f -v",
     "db:test:up": "docker compose up mysql-test -d",
-    "db:test:restart": "yarn db:dev:rm && yarn db:dev:up && sleep 1 && yarn prisma:dev:deploy",
+    "db:test:restart": "yarn db:dev:rm && yarn db:dev:up && sleep 1 && yarn prisma:test:deploy",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
