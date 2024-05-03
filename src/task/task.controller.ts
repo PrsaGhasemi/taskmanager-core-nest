@@ -19,7 +19,7 @@ import { JwtGuard } from 'src/auth/guard';
 export class TaskController {
   constructor(private readonly taskService: TaskService) {}
 
-  @Get()
+  @Get('all')
   @Roles('SYSTEM_USER', 'SYSTEM_ADMIN')
   async findAll(@Req() req) {
     const user = req.user;
@@ -41,7 +41,7 @@ export class TaskController {
     }
   }
 
-  @Post()
+  @Post('create')
   @Roles('SYSTEM_USER')
   async create(@Body() createTaskDto: CreateTaskDto, @Req() req) {
     const user = req.user;
