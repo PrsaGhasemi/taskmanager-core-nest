@@ -7,7 +7,6 @@ import * as pactum from 'pactum';
 import { AppModule } from '../src/app.module';
 import { AuthDto } from '../src/auth/dto';
 import { PrismaService } from '../src/prisma/prisma.service';
-import { SigninDto } from 'src/auth/dto/signin.dto';
 
 describe('App e2e', () => {
   let app: INestApplication;
