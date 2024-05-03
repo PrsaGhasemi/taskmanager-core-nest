@@ -6,8 +6,6 @@ import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { SigninDto } from './dto/signin.dto';
-import { UserRole } from '@prisma/client';
-import { Interface } from 'readline';
 @Injectable()
 export class AuthService {
   constructor(
@@ -33,7 +31,7 @@ export class AuthService {
         'Invalid data'
       )
     }
-    return this.signToken(user.id, user.email, user.role);
+    return this.signToken(user.id, user.email);
   }
   async signup(dto: AuthDto) {
     try {const hash = await argon.hash(dto.password)
@@ -46,7 +44,7 @@ export class AuthService {
           password: hash,
         }
       })
-    return this.signToken(user.id, user.email, user.role);
+    return this.signToken(user.id, user.email);
   } 
     catch(error) {
       if(error instanceof PrismaClientKnownRequestError) {
@@ -60,15 +58,11 @@ export class AuthService {
     }
   }
 
-  async signToken(userId: number , email: string, role: Interface): Promise<{access_token: string}> {
-    interface role {
-      "SYSTEM_ADMIN"
-      "SYSTEM_USER"
-    }
+  async signToken(userId: number , email: string): Promise<{access_token: string}> {
+    
     const payload = {
       sub: userId,
       email,
-      role
     }
     const token = await this.jwt.signAsync(payload, {
       expiresIn: '90m',
