@@ -7,6 +7,7 @@ import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { SigninDto } from './dto/signin.dto';
 import { UserRole } from '@prisma/client';
+import { Interface } from 'readline';
 @Injectable()
 export class AuthService {
   constructor(
@@ -59,7 +60,11 @@ export class AuthService {
     }
   }
 
-  async signToken(userId: number , email: string, role: string): Promise<{access_token: string}> {
+  async signToken(userId: number , email: string, role: Interface): Promise<{access_token: string}> {
+    interface role {
+      "SYSTEM_ADMIN"
+      "SYSTEM_USER"
+    }
     const payload = {
       sub: userId,
       email,
