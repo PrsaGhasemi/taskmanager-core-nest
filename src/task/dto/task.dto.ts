@@ -21,9 +21,9 @@ export class CreateTaskDto {
 
 export class UpdateTaskDto {
   @IsString()
-  @IsOptional()
+  @IsNotEmpty()
   @MaxLength(100)
-  title?: string;
+  title: string;
 
   @IsString()
   @IsOptional()
