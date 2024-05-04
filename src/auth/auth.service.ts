@@ -25,7 +25,7 @@ export class AuthService {
       )
     }
     //TODO generate proper error thrower helper
-    const passwordValidated = argon.verify(user.password, dto.password)
+    const passwordValidated = await argon.verify(user.password, dto.password)
     if(!passwordValidated) {
       throw new ForbiddenException(
         'Invalid data'

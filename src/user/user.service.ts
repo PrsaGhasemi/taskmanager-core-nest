@@ -11,7 +11,7 @@ export class UserService {
   async update(id: number, updateUserDto: UpdateUserDto): Promise<User> {
     return this.prisma.user.update({
       where: { id },
-      data: updateUserDto
+      data: {... updateUserDto , updatedAt: new Date()}
         });
   }
   async remove(id: number): Promise<User> {
