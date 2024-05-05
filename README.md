@@ -8,7 +8,11 @@
 
 #before doing anything:
 create .env and .env.test files after pulling this repo and copy values from
-their example into your own .env file
+their example into your own .env file.
+
+update from 2/15:
+  - Postman collection added to the repo (branch develop)
+  
 
 ```bash
 $ yarn install
