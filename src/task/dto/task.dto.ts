@@ -15,8 +15,6 @@ export class CreateTaskDto {
   @IsOptional()
   isCompleted?: boolean;
 
-  @IsNotEmpty()
-  userId: number;
 }
 
 export class UpdateTaskDto {

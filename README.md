@@ -9,7 +9,12 @@
 
 #Before doing anything:
 create .env and .env.test files after pulling this repo and copy values from
-their example into your own env files.
+
+their example into your own .env file.
+
+update from 2/15:
+  - Postman collection added to the repo and some changes on Task module
+  
 
 ```bash
 $ yarn install

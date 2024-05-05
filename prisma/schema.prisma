@@ -14,50 +14,55 @@ datasource db {
 }
 
 model User {
-  id          Int   @id @default(autoincrement())
-  email       String   @unique
-  phoneNumber String   @unique
-  username    String   @unique
+  id          Int                 @id @default(autoincrement())
+  email       String              @unique
+  phoneNumber String              @unique
+  username    String              @unique
   password    String
   role        UserRole?
-  createdAt DateTime @default(now())
-  updatedAt DateTime?
-  avatar UserProfilePicture?
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime?
+  avatar      UserProfilePicture?
   tasks       Task[]
 
   @@map("users")
 }
+
 enum UserRole {
   SYSTEM_ADMIN
   SYSTEM_USER
 }
+
 model UserProfilePicture {
-  id        Int    @id @default(autoincrement())
-  userId    Int    @unique
-  fileName  String
-  fileType  String
-  fileSize  Int
-  user      User   @relation(fields: [userId], references: [id])
+  id       Int    @id @default(autoincrement())
+  userId   Int    @unique
+  fileName String
+  fileType String
+  fileSize Int
+  user     User   @relation(fields: [userId], references: [id])
 }
+
 model Task {
-  id          Int   @id @default(autoincrement())
-  userId    Int    @unique
+  id          Int              @id @default(autoincrement())
+  userId      Int
   title       String
   description String?
   //TODO implement db logic to handle conditions like pending/shifted or...
-  isCompleted Boolean @default(false)
-  attachment TaskAttachment[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime?
-  user        User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  isCompleted Boolean          @default(false)
+  attachment  TaskAttachment[]
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime?
+  user        User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+
   @@index([isCompleted])
   @@map("tasks")
 }
+
 model TaskAttachment {
-  id        Int    @id @default(autoincrement())
-  taskId    Int @unique
-  fileName  String
-  fileType  String
-  fileSize  Int
-  task      Task   @relation(fields: [taskId], references: [id])
+  id       Int    @id @default(autoincrement())
+  taskId   Int    @unique
+  fileName String
+  fileType String
+  fileSize Int
+  task     Task   @relation(fields: [taskId], references: [id])
 }

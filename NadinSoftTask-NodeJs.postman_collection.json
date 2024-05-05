@@ -1,0 +1,357 @@
+{
+	"info": {
+		"_postman_id": "1d02594b-95b9-4b89-85e5-70b6277a85e0",
+		"name": "NadinSoftTask-NodeJs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23050567"
+	},
+	"item": [
+		{
+			"name": "CRUD",
+			"item": [
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "Profile",
+							"item": []
+						},
+						{
+							"name": "Create User",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"parsa.ghasemi2012@gmail.com\",\n    \"username\": \"parsaghasemi\",\n    \"password\": \"password123458\",\n    \"phoneNumber\": \"09190000000\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/auth/signup",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsImVtYWlsIjoicGFyc2EuZ2hhc2VtaTIwMTJAZ21haWwuY29tIiwiaWF0IjoxNzE0NzQwMzYwLCJleHAiOjE3MTQ3NDU3NjB9.e-qucbFO1UrIY6sgGpGTjZu764ze38VgwFGNJOjY8hU",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/users/me",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"users",
+										"me"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Sign In User",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"parsaghasemi\",\n    \"password\": \"password123458\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/auth/signin",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"auth",
+										"signin"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Users",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsImVtYWlsIjoicGFyc2EuZ2hhc2VtaTIwMTJAZ21haWwuY29tIiwiaWF0IjoxNzE0NzQ4MTE2LCJleHAiOjE3MTQ3NTM1MTZ9.Puehd2fEWpBZuEXIveKtjeEvsNSdC5U-HGXgrB2QSyI",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/users/all",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"users",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update User",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsImVtYWlsIjoicGFyc2EuZ2hhc2VtaTIwMTJAZ21haWwuY29tIiwiaWF0IjoxNzE0NzU5MDI1LCJleHAiOjE3MTQ3NjQ0MjV9.vMn0k9h6tJ5mN4Erm4g81sDdpODy9EEJmmn-qnuaxyM",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/users/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"users",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update User",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEzLCJlbWFpbCI6InBhcnNhLmdoYXNlbWkyMDE0QGdtYWlsLmNvbSIsImlhdCI6MTcxNDc2MDg2OSwiZXhwIjoxNzE0NzY2MjY5fQ.MEl09jBrjoT7ml7OjaG_eVCSi7nzJuI6AIVQB3l7gaE",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"parsa.ghasemi2016@gmail.com\",\n    \"phoneNumber\": \"09193130911\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/users/13",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"users",
+										"13"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Task",
+					"item": [
+						{
+							"name": "Create Task",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjE0LCJlbWFpbCI6InBhcnNhLmdoYXNlbWkyMDEyQGdtYWlsLmNvbSIsImlhdCI6MTcxNDc3OTk0MiwiZXhwIjoxNzE0Nzg1MzQyfQ.DLy59c0N4IpMaqSqAs8vO4NJccQf8Q4voV2j5oJH2KU",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Coding\",\n    \"userId\": 13\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/tasks/create",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"tasks",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Task",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsImVtYWlsIjoicGFyc2EuZ2hhc2VtaTIwMTJAZ21haWwuY29tIiwiaWF0IjoxNzE0NzU5MDI1LCJleHAiOjE3MTQ3NjQ0MjV9.vMn0k9h6tJ5mN4Erm4g81sDdpODy9EEJmmn-qnuaxyM",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/tasks/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"tasks",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Tasks",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsImVtYWlsIjoicGFyc2EuZ2hhc2VtaTIwMTJAZ21haWwuY29tIiwiaWF0IjoxNzE0NzQ4MTE2LCJleHAiOjE3MTQ3NTM1MTZ9.Puehd2fEWpBZuEXIveKtjeEvsNSdC5U-HGXgrB2QSyI",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/tasks/all",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"tasks",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Task",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsImVtYWlsIjoicGFyc2EuZ2hhc2VtaTIwMTJAZ21haWwuY29tIiwiaWF0IjoxNzE0NzU5MDI1LCJleHAiOjE3MTQ3NjQ0MjV9.vMn0k9h6tJ5mN4Erm4g81sDdpODy9EEJmmn-qnuaxyM",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/tasks/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"tasks",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Task",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEzLCJlbWFpbCI6InBhcnNhLmdoYXNlbWkyMDE0QGdtYWlsLmNvbSIsImlhdCI6MTcxNDc2MDg2OSwiZXhwIjoxNzE0NzY2MjY5fQ.MEl09jBrjoT7ml7OjaG_eVCSi7nzJuI6AIVQB3l7gaE",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/tasks/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"tasks",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
